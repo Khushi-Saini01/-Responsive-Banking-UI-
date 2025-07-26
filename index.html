@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Responsive Banking UI</title>
+  <style>
+    /* Reset & Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #f0f2f5, #e8f0fe);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .banking-container {
+      background: #fff;
+      border-radius: 20px;
+      padding: 40px 30px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: 0.3s ease;
+    }
+
+    .balance-card {
+      background: linear-gradient(90deg, #2196f3, #21cbf3);
+      padding: 25px;
+      border-radius: 16px;
+      font-size: 2rem;
+      font-weight: 600;
+      color: #fff;
+      box-shadow: 0 8px 18px rgba(33, 150, 243, 0.3);
+      margin-bottom: 35px;
+      transition: 0.3s ease;
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: space-around;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      flex: 1 1 120px;
+      padding: 14px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .deposit {
+      background: linear-gradient(45deg, #43e97b, #38f9d7);
+      color: #fff;
+    }
+
+    .deposit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(67, 233, 123, 0.4);
+    }
+
+    .withdraw {
+      background: linear-gradient(45deg, #ff4e50, #f9d423);
+      color: #fff;
+    }
+
+    .withdraw:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(255, 78, 80, 0.4);
+    }
+
+    @media (max-width: 500px) {
+      .banking-container {
+        padding: 30px 20px;
+      }
+
+      .balance-card {
+        font-size: 1.5rem;
+      }
+
+      button {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="banking-container">
+    <div class="balance-card" id="balanceDisplay">Balance: ₹10,000</div>
+
+    <div class="button-group">
+      <button class="deposit" onclick="deposit()">Deposit ₹500</button>
+      <button class="withdraw" onclick="withdraw()">Withdraw ₹500</button>
+    </div>
+  </div>
+
+  <script>
+    let balance = 10000;
+
+    function updateBalance() {
+      document.getElementById("balanceDisplay").innerText = `Balance: ₹${balance.toLocaleString()}`;
+    }
+
+    function deposit() {
+      balance += 500;
+      updateBalance();
+    }
+
+    function withdraw() {
+      if (balance >= 500) {
+        balance -= 500;
+      } else {
+        alert(" Insufficient Balance!");
+      }
+      updateBalance();
+    }
+  </script>
+</body>
+</html>
